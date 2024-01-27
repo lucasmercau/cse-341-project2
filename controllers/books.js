@@ -18,7 +18,59 @@ const getSingle = async (req, res) => {
     })
 }
 
+const createBook = async (req, res) => {
+    const book = {
+        title: req.body.title,
+        author: req.body.author,
+        genre: req.body.genre,
+        publishedYear: req.body.publishedYear,
+        pages: req.body.pages,
+        protagonist: req.body.protagonist,
+        themes: req.body.themes,
+        setting: req.body.setting
+    };
+    const response = await mongodb.getDatabase().db().collection("books").insertOne(book);
+    if(response.acknowledged) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || "Some error ocurred while updating the user.");
+    }
+}
+
+const updateBook = async (req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const book = {
+        title: req.body.title,
+        author: req.body.author,
+        genre: req.body.genre,
+        publishedYear: req.body.publishedYear,
+        pages: req.body.pages,
+        protagonist: req.body.protagonist,
+        themes: req.body.themes,
+        setting: req.body.setting
+    };
+    const response = await mongodb.getDatabase().db().collection("books").replaceOne({ _id: userId }, book);
+    if(response.modifiedCount > 0) { //So we can do a modified count to see if it's greater than zero, then it's successful.
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || "Some error ocurred while updating the user.");
+    }
+}
+
+const deleteBook = async (req, res) => {
+    const userId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabase().db().collection("books").deleteOne({ _id: userId });
+    if(response.deletedCount > 0) { //So we can do a deleted count to see if it's greater than zero, then it's successful.
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || "Some error ocurred while updating the user.");
+    }
+}
+
 module.exports = {
     getAll,
-    getSingle
+    getSingle,
+    createBook,
+    updateBook,
+    deleteBook
 }
