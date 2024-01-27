@@ -1,2 +1,37 @@
 ### Get from localhost all the books
 GET http://localhost:3000/books
+### Get from localhost 1 book
+GET http://localhost:3000/books/65b436473d8e139541fe1c9e
+
+### Create book
+POST http://localhost:3000/books HTTP/1.1
+content-type: application/json
+
+{
+    "title": "The Catcher in the Rye",
+    "author": "J.D. Salinger",
+    "genre": "Coming-of-Age",
+    "publishedYear": 1951,
+    "pages": 224,
+    "protagonist": "Holden Caulfield",
+    "themes": ["Alienation", "Identity", "Innocence"],
+    "setting": "New York City"
+}
+
+### Update book
+PUT http://localhost:3000/books/65a2cbce7f24d2f940dcf09f HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "author": "J.K. Rowling",
+    "genre": "Fantasy",
+    "publishedYear": 1997,
+    "pages": 309,
+    "protagonist": "Harry Potter",
+    "themes": ["Friendship", "Courage", "Good vs. Evil"],
+    "setting": "Hogwarts School of Witchcraft and Wizardry"
+}
+
+### Delete book 
+DELETE http://localhost:3000/books/65a57153e2c842d8c65ee880 HTTP/1.1
