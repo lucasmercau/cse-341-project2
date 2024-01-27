@@ -1,0 +1,2 @@
+### Get from localhost all the books
+GET http://localhost:3000/books
