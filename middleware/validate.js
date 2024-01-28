@@ -3,7 +3,7 @@ const { body, validationResult } = require('express-validator');
 const validateBook = [
     body('title').notEmpty().isString().withMessage('Title is required'),
     body('author').notEmpty().isString().withMessage('Author is required'),
-    body('genre').notEmpty().isString().withMessage('Genre is required'),
+    body('genre').notEmpty().withMessage('Genre is required'),
     body('publishedYear').isInt({ min: 0 }).withMessage('Published year must be a positive integer'),
     body('pages').isInt({ min: 0 }).withMessage('Pages must be a positive integer'),
     body('protagonist').notEmpty().withMessage('Protagonist is required'),
