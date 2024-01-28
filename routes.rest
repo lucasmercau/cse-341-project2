@@ -8,7 +8,7 @@ POST http://localhost:3000/books HTTP/1.1
 content-type: application/json
 
 {
-    "title": 1,
+    "title": "The Catcher in the Rye",
     "author": "J.D. Salinger",
     "genre": "Coming-of-Age",
     "publishedYear": 1951,

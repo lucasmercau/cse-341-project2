@@ -1,9 +1,9 @@
 const { body, validationResult } = require('express-validator');
 
 const validateBook = [
-    body('title').notEmpty().withMessage('Title is required'),
-    body('author').notEmpty().withMessage('Author is required'),
-    body('genre').notEmpty().withMessage('Genre is required'),
+    body('title').notEmpty().isString().withMessage('Title is required'),
+    body('author').notEmpty().isString().withMessage('Author is required'),
+    body('genre').notEmpty().isString().withMessage('Genre is required'),
     body('publishedYear').isInt({ min: 0 }).withMessage('Published year must be a positive integer'),
     body('pages').isInt({ min: 0 }).withMessage('Pages must be a positive integer'),
     body('protagonist').notEmpty().withMessage('Protagonist is required'),
@@ -20,7 +20,7 @@ const validateBook = [
 ];
 
 const validateClient = [
-    body('name').notEmpty().withMessage('Name is required'),
+    body('name').notEmpty().isString().withMessage('Name is required'),
     body('email').notEmpty().isEmail().withMessage('Valid email is required'),
     body('phone').notEmpty().withMessage('Phone number is required'),
     body('address').notEmpty().withMessage('Address is required'),
