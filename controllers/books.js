@@ -86,11 +86,6 @@ const deleteBook = async (req, res) => {
     //#swagger.tags=["Books"]
     if (ObjectId.isValid(req.params.id)) {
         const userId = new ObjectId(req.params.id);
-        if (!isValidObjectId(userId)) {
-            // If the provided ID is not a valid ObjectId, return a 400 Bad Request response
-            res.status(400).json({ error: "Invalid ID format" });
-            return;
-        }
         const response = await mongodb.getDatabase().db().collection("books").deleteOne({ _id: userId });
         if(response.deletedCount > 0) { //So we can do a deleted count to see if it's greater than zero, then it's successful.
             res.status(204).send();
