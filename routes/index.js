@@ -7,5 +7,6 @@ router.get("/", (req, res) => {
     res.send("Project 2")});
 
 router.use("/books", require("./books"));
+router.use("/clients", require("./clients"));
 
 module.exports = router;

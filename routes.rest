@@ -8,7 +8,7 @@ POST http://localhost:3000/books HTTP/1.1
 content-type: application/json
 
 {
-    "title": "The Catcher in the Rye",
+    "title": 1,
     "author": "J.D. Salinger",
     "genre": "Coming-of-Age",
     "publishedYear": 1951,
@@ -19,7 +19,7 @@ content-type: application/json
 }
 
 ### Update book
-PUT http://localhost:3000/books/65a2cbce7f24d2f940dcf09f HTTP/1.1
+PUT http://localhost:3000/books/65b436473d8e139541fe1c95 HTTP/1.1
 content-type: application/json
 
 {
@@ -34,4 +34,37 @@ content-type: application/json
 }
 
 ### Delete book 
-DELETE http://localhost:3000/books/65a57153e2c842d8c65ee880 HTTP/1.1
+DELETE http://localhost:3000/books/65b436473d8e139541fe1c95 HTTP/1.1
+
+
+
+
+### Get from localhost all the clients
+GET http://localhost:3000/clients
+### Get from localhost 1 client
+GET http://localhost:3000/clients/65b5ce1ea03c6f38c4e6d3ce
+
+### Create client
+POST http://localhost:clients/clients HTTP/1.1
+content-type: application/json
+
+{
+    "name": "David Wilson",
+    "email": "david@example.com",
+    "phone": "555-7890",
+    "address": "654 Maple St, Rural, Country"
+}
+
+### Update client
+PUT http://localhost:3000/clients/65b436473d8e139541fe1c95 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Sophia Lee",
+    "email": "sophia@example.com",
+    "phone": "555-2345",
+    "address": "321 Birch St, Countryside, Country"
+}
+
+### Delete client 
+DELETE http://localhost:3000/clients/65b436473d8e139541fe1c95 HTTP/1.1
